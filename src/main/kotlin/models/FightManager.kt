@@ -5,6 +5,7 @@ import models.entity.Entity
 import models.entity.Monster
 import pause
 import printSpacer
+import selectIntoList
 
 class FightManager private constructor(
     private val redTeam: MutableList<Entity>,
@@ -86,37 +87,5 @@ class FightManager private constructor(
     private fun selectSpell(character: Character): Spell {
         println("Select spell: ")
         return character.spells[selectIntoList(character.spells)]
-        //        var input: String? = ""
-//        do {
-//            character.spells.forEachIndexed { index, spell -> println("$index-${spell.name}") }
-//            input = readLine()
-//            printSpacer()
-//            try {
-//                val nbInput = input?.toInt(10)
-//                println("Spell selected: ${character.spells[nbInput ?: 0].name}")
-//                return character.spells[nbInput ?: 0]
-//            } catch (e: Exception) {
-////                e.printStackTrace() // Debug
-//                println("Error selecting the spell.")
-//                continue
-//            }
-//        } while (input != "1")
-//        return null // Should not happen
-    }
-
-    private fun selectIntoList(list: List<Any>): Int {
-        var input: String?
-        do {
-            list.forEachIndexed { index, item -> println("$index-$item") }
-            input = readLine()
-            try {
-                val nbInput = input?.toInt(10)
-                return nbInput ?: 0
-            } catch (e: Exception) {
-//                e.printStackTrace() // Debug
-                println("Error during selection")
-                continue
-            }
-        } while (true)
     }
 }
