@@ -1,4 +1,5 @@
 package models.entity
 
-interface Monster {
+abstract class Monster: Entity() {
+
 }

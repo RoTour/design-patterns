@@ -1,4 +1,5 @@
 package models.entity
 
-class Prespic {
+class Prespic: Monster() {
+    override var pv: Int = 89
 }

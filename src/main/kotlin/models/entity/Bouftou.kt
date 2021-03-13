@@ -1,4 +1,5 @@
 package models.entity
 
-class Bouftou {
+class Bouftou: Monster() {
+    override var pv: Int = 77
 }

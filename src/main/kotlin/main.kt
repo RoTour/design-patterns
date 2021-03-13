@@ -1,3 +1,5 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import models.game.GameEngine
+
+fun main() {
+    GameEngine()
 }
