@@ -1,12 +1,11 @@
 package models.entity
 
-abstract class Character : Entity() {
-    override var pv: Int = 50
-    private var kamas: Int = 0
-    abstract var power: Int
+import models.Spell
 
-    fun endOfQuest(reward: Int) {
-        if (reward < 0) return
-        kamas+=reward
-    }
+abstract class Character : Entity() {
+    abstract var power: Int
+    abstract val spells: MutableList<Spell>
+    private var kamas: Int = 0
+    override var pv: Int = 50
+
 }
