@@ -1,10 +1,8 @@
 package models.game
 
 import factories.EntityFactory
-import models.entity.Character
-import models.entity.Cra
-import models.entity.Enutrof
-import models.entity.Iop
+import models.FightManager
+import models.entity.*
 import printSpacer
 
 class GameEngine {
@@ -60,7 +58,9 @@ class GameEngine {
                 // Exit the game
                 "0" -> eventManager.addEvent(Event { gameState = GameState.STOPPED })
                 // Pick an opponent
-                "1" -> eventManager.addEvent(Event { })
+                "1" -> eventManager.addEvent(Event {
+                    FightManager.buildFightAgainst(player, Bouftou::class.java).startFight()
+                })
                 // Start a quest
                 "2" -> eventManager.addEvent(Event { })
             }
