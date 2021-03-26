@@ -13,7 +13,6 @@ class GameEngine {
         STARTED,
     }
     var gameState = GameState.STOPPED
-    private val eventManager = EventManager()
     private lateinit var player: Character
 
     init {
@@ -23,10 +22,11 @@ class GameEngine {
 
     private fun startGame() {
         selectCharacter()
+        EventManager.subscribe(VictoryListener(player))
 
         while (gameState != GameState.STOPPED) {
             readUserAction()
-            eventManager.runAllEvents()
+            EventManager.runAllEvents()
         }
     }
 
@@ -43,7 +43,7 @@ class GameEngine {
                 "2" -> player = EntityFactory.create(Enutrof::class.java)
             }
         }
-        println("Player created! Your class: ${player.javaClass.canonicalName} (enter to continue)")
+        println("Player created! Your class: ${player.javaClass.simpleName} (enter to continue)")
         readLine()
         printSpacer()
     }
@@ -56,13 +56,13 @@ class GameEngine {
             input = readLine()
             when (input) {
                 // Exit the game
-                "0" -> eventManager.addEvent(Event { gameState = GameState.STOPPED })
+                "0" -> EventManager.addEvent(Event { gameState = GameState.STOPPED })
                 // Pick an opponent
-                "1" -> eventManager.addEvent(Event {
+                "1" -> EventManager.addEvent(Event {
                     FightManager.buildFightAgainst(player, Bouftou::class.java).startFight()
                 })
-                // Start a quest
-                "2" -> eventManager.addEvent(Event { })
+//                // Start a quest
+//                "2" -> eventManager.addEvent(Event { })
             }
         }
     }

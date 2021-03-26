@@ -7,6 +7,6 @@ class Iop: Character() {
     override val spells: MutableList<Spell> = mutableListOf(
         Spell("Pression", 14, 18),
         Spell("Concentration", 9, 13),
-        Spell("Epee destructrice", 20, 24),
+        Spell("Epee destructrice", 20, 40),
     )
 }

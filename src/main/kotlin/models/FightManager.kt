@@ -3,6 +3,7 @@ package models
 import models.entity.Character
 import models.entity.Entity
 import models.entity.Monster
+import models.game.EventManager
 import pause
 import printSpacer
 import selectIntoList
@@ -44,7 +45,7 @@ class FightManager private constructor(
         }
         if(blueTeam.isEmpty() && redTeam.isNotEmpty()) {
             println("RED TEAM WINS !")
-            redTeam.forEach { it.power += 5 }
+//            redTeam.forEach { it.power += 5 }
         }
         if(redTeam.isEmpty() && blueTeam.isEmpty()) {
             println("DRAW !")
@@ -54,6 +55,7 @@ class FightManager private constructor(
         }
         redTeam.clear()
         blueTeam.clear()
+        EventManager.notifySubscribers()
     }
 
     private fun playTurn(playingTeam: MutableList<Entity>, opponentTeam: MutableList<Entity>) {
